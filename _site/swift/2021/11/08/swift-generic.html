@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[Swift] Generic</title>
+  <meta name="description" content="[Swift] Generic">
+  
+  <meta name="author" content="Kim-Bobo">
+  <meta name="copyright" content="&copy; Kim-Bobo 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="[Swift] Generic" />
+  <meta property="og:url" content="http://localhost:4000/swift/2021/11/08/swift-generic.html">
+  <meta property="og:site_name" content="보보의 Devlog" />
+  <meta property="og:title" content="[Swift] Generic" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/instacode.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[Swift] Generic">
+  <meta name="twitter:description" content="[Swift] Generic">
+  <meta name="twitter:image" content="http://localhost:4000/assets/instacode.png">
+  <meta name="twitter:url" content="http://localhost:4000/swift/2021/11/08/swift-generic.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/swift/2021/11/08/swift-generic.html">
+	<link rel="alternate" type="application/rss+xml" title="보보의 Devlog" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="보보의 Devlog">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">[Swift] Generic</h1>
+      <p class="info">by <strong>bobo</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">November 8, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Swift">Swift</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h1 id="swift-generic">[Swift] Generic</h1>
+
+<h2 id="1-generic">1. Generic?</h2>
+
+<p><a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_283">애플 공식 문서</a>부터 살펴보면, <code class="language-plaintext highlighter-rouge">Generic</code>은 Swift의 가장 강력한 기능 중 하나이며 Swift 표준 라이브러리의 대부분은 Generic 코드로 빌드된다고 설명한다. 일반 함수 대신 <strong>제네릭 함수(Generic Function)</strong>를 사용하면 코드의 중복을 피하고 재사용 가능하게 작성할 수 있다.</p>
+
+<p>여기 두 개의 Int 값을 교환하는 일반 함수가 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">swapTwoInts</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 일반 함수의 파라미터는 Int 타입으로 선언되어 있기 때문에 Int만 파라미터로 받을 수 있다.<br />
+다른 타입으로도 서로 두 개의 값을 교환하고 싶다면, 각 타입마다 교환하는 함수를 새로 만들어야 한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">swapTwoStrings</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">swapTwoDoubles</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Double</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>String형 값을 교환하는 함수와 Double형 값을 교환하는 함수도 만들어주었다.<br />
+파라미터로 받는 타입만 다를 뿐, 함수 안에서 실행하는 동작은 모두 일치한다.</p>
+
+<p>이럴 때, 사용하는게 바로 <code class="language-plaintext highlighter-rouge">제네릭 함수</code>이다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">제네릭 함수</code>는 일반 함수와 달리 함수 이름 옆에 <code class="language-plaintext highlighter-rouge">Placeholder 타입 이름</code>이 온다.<br />
+T는 <code class="language-plaintext highlighter-rouge">타입 파라미터</code>라고 부르며, 이 T는 swapTwoValues 함수가 호출될 때마다 <strong>결정</strong>된다.</p>
+
+<p>완성된 코드를 갖고 값을 넣어 함수를 호출해보면,</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">firstNum</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">var</span> <span class="nv">secondNum</span> <span class="o">=</span> <span class="mi">394</span>
+<span class="nf">swapTwoValues</span><span class="p">(</span><span class="o">&amp;</span><span class="n">firstNum</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">secondNum</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"firstNum is </span><span class="se">\(</span><span class="n">firstNum</span><span class="se">)</span><span class="s">, secondNum is </span><span class="se">\(</span><span class="n">secondNum</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// firstNum is 394, secondNum is 10</span>
+
+<span class="k">var</span> <span class="nv">firstText</span> <span class="o">=</span> <span class="s">"Hello"</span>
+<span class="k">var</span> <span class="nv">secondText</span> <span class="o">=</span> <span class="s">"bobo"</span>
+<span class="nf">swapTwoValues</span><span class="p">(</span><span class="o">&amp;</span><span class="n">firstText</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">secondText</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"firstText is </span><span class="se">\(</span><span class="n">firstText</span><span class="se">)</span><span class="s">, secondText is </span><span class="se">\(</span><span class="n">secondText</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="c1">// firstText is bobo, secondText is Hello</span>
+</code></pre></div></div>
+
+<p>정상적으로 두 값이 교환된 것을 확인할 수 있다.<br />
+타입 파라미터인 T는 이름일 뿐 아무렇게나 써도 문제는 없다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">swapTwoValues</span><span class="o">&lt;</span><span class="kt">Hello</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">a</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hello</span><span class="p">,</span> <span class="n">_</span> <span class="nv">b</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hello</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">temporaryA</span> <span class="o">=</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">temporaryA</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 쓰는거도 가능하다. 하지만 이름에는 자신의 역할이 담겨있는게 좋다.<br />
+swapTwoValues 함수같은 경우에는 타입 파라미터와 의미있는 관계가 아니기 때문에 T와 같은 단일 문자를 사용하는 것이 일반적이다. ex) T, V, U, …</p>
+
+<p><br /></p>
+
+<h2 id="2-타입-제약type-constraint">2. 타입 제약(Type Constraint)</h2>
+
+<p>제네릭을 활용해서 두 개의 값을 받아서 두 값이 같으면 true, 다르면 false를 반환하는 함수를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">of</span> <span class="nv">valueToFind</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="k">in</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">valueToFind</span> <span class="p">{</span>	<span class="c1">// Binary operator '==' cannot be applied to two 'T' operands</span>
+      <span class="k">return</span> <span class="n">index</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>작성해보니 컴파일 에러가 발생한다. <code class="language-plaintext highlighter-rouge">==</code>연산자는 <code class="language-plaintext highlighter-rouge">Equatable</code>프로토콜을 준수할 때만 사용할 수 있기 때문이다. <code class="language-plaintext highlighter-rouge">Equatable</code>를 준수하는 모든 타입은 <code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">!=</code>연산자를 두 값의 비교를 위해 사용할 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">findIndex</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Equatable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">of</span> <span class="nv">valueToFind</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="k">in</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">valueToFind</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">index</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">타입 파라미터</code>가 <code class="language-plaintext highlighter-rouge">Equatable</code> 프로토콜을 준수하게 해주니, 에러가 사라진 것을 볼 수 있다.</p>
+
+<p><br /></p>
+
+<h2 id="3-제네릭-타입generic-type">3. 제네릭 타입(Generic Type)</h2>
+
+<p>제네릭은 함수에만 가능한 것이 아니다.<br />
+구조체, 클래스, 열거형 타입에도 선언할 수 있는데, 이것을 <code class="language-plaintext highlighter-rouge">제네릭 타입(Generic Type)</code>이라고 한다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">items</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Element</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">items</span><span class="o">.</span><span class="nf">removeLast</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>제네릭 함수와 동일하게 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 안에 타입 파라미터 이름을 선언해주면 된다.<br />
+제네릭 타입의 인스턴스를 만들고 싶을때는, <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 안에 Stack에 저장할 유형을 작성하여 인스턴스를 만들 수 있다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">stackOfStrings</span> <span class="o">=</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="nf">stackOfStrings</span><span class="p">(</span><span class="s">"one"</span><span class="p">)</span>
+<span class="nf">stackOfStrings</span><span class="p">(</span><span class="s">"two"</span><span class="p">)</span>
+<span class="nf">stackOfStrings</span><span class="p">(</span><span class="s">"three"</span><span class="p">)</span>
+<span class="nf">stackOfStrings</span><span class="p">(</span><span class="s">"four"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><br /><br /><br /></p>
+
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Swift">Swift</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">보보의 Devlog</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:beehk58@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">beehk58@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/Kim-Bobo" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">bencentra</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text"></p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1"></script>
+<script src="//unpkg.com/tippy.js@5"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>

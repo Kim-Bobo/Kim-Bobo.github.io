@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[Swift] Class와 Struct</title>
+  <meta name="description" content="[Swift] Class와 Struct">
+  
+  <meta name="author" content="Kim-Bobo">
+  <meta name="copyright" content="&copy; Kim-Bobo 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="[Swift] Class와 Struct" />
+  <meta property="og:url" content="http://localhost:4000/swift/2021/11/23/swift-class-struct.html">
+  <meta property="og:site_name" content="보보의 Devlog" />
+  <meta property="og:title" content="[Swift] Class와 Struct" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/instacode.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[Swift] Class와 Struct">
+  <meta name="twitter:description" content="[Swift] Class와 Struct">
+  <meta name="twitter:image" content="http://localhost:4000/assets/instacode.png">
+  <meta name="twitter:url" content="http://localhost:4000/swift/2021/11/23/swift-class-struct.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/swift/2021/11/23/swift-class-struct.html">
+	<link rel="alternate" type="application/rss+xml" title="보보의 Devlog" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="보보의 Devlog">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">[Swift] Class와 Struct</h1>
+      <p class="info">by <strong>bobo</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">November 23, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Swift">Swift</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h1 id="swift-class와-struct">[Swift] Class와 Struct</h1>
+
+<p>면접 질문에서도 많이 등장하는 Class와 Struct에 대해서 <a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#">애플 공식 문서</a>와 함께 알아보자.</p>
+
+<h2 id="1-class와-struct의-공통점">1. Class와 Struct의 공통점</h2>
+
+<ul>
+  <li>여러 변수를 담을 수 있는 컨테이너이다.</li>
+  <li>값을 저장할 프로퍼티를 선언할 수 있다.</li>
+  <li>함수적 기능을 하는 메소드를 선언할 수 있다.</li>
+  <li>내부 값에 .을 사용하여 값에 대해 접근할 수 있다.</li>
+  <li>생성자를 사용하여 초기 상태를 설정할 수 있다.</li>
+  <li>extension을 사용하여 기능을 확장할 수 있다.</li>
+  <li>Protocol을 채택하여 기능을 설정할 수 있다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="2-class와-struct의-차이점">2. Class와 Struct의 차이점</h2>
+
+<h3 id="class">Class</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">참조 타입</code>이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Heap</code> 메모리 영역에 할당된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">ARC</code>로 메모리를 관리한다.</li>
+  <li>같은 클래스 인스턴스를 여러 개의 변수에 할당한 뒤 값을 변형시키면 할당한 모든 변수에 영향을 준다. <code class="language-plaintext highlighter-rouge">(메모리만 복사)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">상속</code>이 가능하다.</li>
+  <li>타입 캐스팅을 통해 클래스 인스턴스의 타입을 확인할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">deinit</code>을 사용하여 클래스 인스턴스의 메모리 할당을 해제할 수 있다.</li>
+</ul>
+
+<h3 id="struct">Struct</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">값 타입</code>이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Stack</code> 메모리 영역에 할당된다.</li>
+  <li>구조체 변수를 새로운 변수에 할당할 때마다 새로운 구조체가 할당된다. <code class="language-plaintext highlighter-rouge">(값 자체를 복사)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Codable</code> 프로토콜을 이용하여 JSON과 Struct 간에 손쉽게 변환이 가능하다.</li>
+</ul>
+
+<p><br /></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">PersonClass</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">20</span>
+  
+  <span class="kd">deinit</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"메모리 할당 해제"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">PersonStruct</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">pClass1</span> <span class="o">=</span> <span class="kt">PersonClass</span><span class="p">()</span>
+<span class="k">var</span> <span class="nv">pClass2</span> <span class="o">=</span> <span class="n">pClass1</span>
+<span class="k">var</span> <span class="nv">pClass3</span> <span class="o">=</span> <span class="n">pClass1</span>
+
+<span class="n">pClass3</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">pClass1</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>	<span class="c1">// 30, class는 참조 타입이기 때문에 pClass3을 변경해도 pClass1까지 변경된다.</span>
+
+<span class="k">var</span> <span class="nv">pStruct1</span> <span class="o">=</span> <span class="kt">PersonStruct</span><span class="p">()</span>
+<span class="k">var</span> <span class="nv">pStruct2</span> <span class="o">=</span> <span class="n">pStruct1</span>
+<span class="k">var</span> <span class="nv">pStruct3</span> <span class="o">=</span> <span class="n">pStruct1</span>
+
+<span class="n">pStruct3</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">pStruct3</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>	<span class="c1">// 10</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">pStruct1</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>	<span class="c1">// 20, 구조체는 값 타입이기 때문에 pStruct3의 값 변경이 pStruct1에 영향을 끼치지 않는다.</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="3-class와-arc">3. Class와 ARC</h2>
+
+<p>Class는 <code class="language-plaintext highlighter-rouge">ARC</code>로 메모리를 관리한다고 한다. 예제와 함께 자세히 알아보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">pClass1</span><span class="p">:</span> <span class="kt">PersonClass</span><span class="p">?</span> <span class="o">=</span> <span class="kt">PersonClass</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">CFGetRetainCount</span><span class="p">(</span><span class="n">pClassARC</span><span class="p">))</span>		<span class="c1">// 2, 디폴트 값</span>
+
+<span class="k">var</span> <span class="nv">pClass2</span> <span class="o">=</span> <span class="n">pClass1</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">CFGetRetainCount</span><span class="p">(</span><span class="n">pClassARC</span><span class="p">))</span>		<span class="c1">// 3, 참조 카운트가 증가된다.</span>
+
+<span class="n">pClass1</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">CFGetRetainCount</span><span class="p">(</span><span class="n">pClassARC</span><span class="p">))</span>		<span class="c1">// 2, 참조 카운트가 감소된다.</span>
+<span class="n">pClass2</span> <span class="o">=</span> <span class="kc">nil</span>		<span class="c1">// 더 이상 참조하는 곳이 없기 때문에 deinit이 호출된다.</span>
+</code></pre></div></div>
+
+<p>예제처럼 클래스 인스턴스를 여러 곳에서 참조하게 되면, 원래 인스턴스를 해제하더라도 참조 카운트가 남아있어 <code class="language-plaintext highlighter-rouge">deinit</code>이 실행되지 않는다. <code class="language-plaintext highlighter-rouge">deinit</code>이 실행되려면 참조되는 모든 값들을 해제해줘야 한다.</p>
+
+<p><br /></p>
+
+<h2 id="4-그렇다면-언제-class를-쓰고-언제-struct를-써야할까">4. 그렇다면 언제 <code class="language-plaintext highlighter-rouge">Class</code>를 쓰고 언제 <code class="language-plaintext highlighter-rouge">Struct</code>를 써야할까?</h2>
+
+<ul>
+  <li>단순한 데이터 값을 보유하기 위해서는 <code class="language-plaintext highlighter-rouge">Struct</code>가 낫다.</li>
+  <li>메모리의 스택은 크기가 크지 않기 때문에 작은 값을 갖는 데이터를 처리할 때 <code class="language-plaintext highlighter-rouge">Struct</code>를 사용한다.</li>
+  <li>상속이 필요하지 않고 모델의 사이즈가 그리 크지 않다면 <code class="language-plaintext highlighter-rouge">Struct</code>를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Codable</code>을 사용하고 싶다면 <code class="language-plaintext highlighter-rouge">Struct</code>를 사용한다.</li>
+  <li>해당 모델을 <code class="language-plaintext highlighter-rouge">serialize</code> 해서 전송하거나 파일로 저장할 일이 있으면 <code class="language-plaintext highlighter-rouge">Class</code> 를 사용한다.</li>
+</ul>
+
+<p><br /><br /><br /></p>
+
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Swift">Swift</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">보보의 Devlog</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:beehk58@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">beehk58@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/Kim-Bobo" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">bencentra</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text"></p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1"></script>
+<script src="//unpkg.com/tippy.js@5"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: archive
 title:  "[Swift] 초기화 (Initialization)"
 date:  2021-11-24 00:00:00
 author: bobo

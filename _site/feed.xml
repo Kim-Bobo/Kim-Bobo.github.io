@@ -3,18 +3,18 @@
   <channel>
     <title>보보의 Devlog</title>
     <description></description>
-    <link>http://localhost:4000/posts/</link>
-    <atom:link href="http://localhost:4000/posts/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 24 Nov 2021 17:46:09 +0900</pubDate>
-    <lastBuildDate>Wed, 24 Nov 2021 17:46:09 +0900</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 24 Nov 2021 17:49:17 +0900</pubDate>
+    <lastBuildDate>Wed, 24 Nov 2021 17:49:17 +0900</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
     
       <item>
         <title>[Swift] 초기화 (Initialization)</title>
         <description>&lt;h1 id=&quot;swift-초기화-initialization&quot;&gt;[Swift] 초기화 (Initialization)&lt;/h1&gt; &lt;h2 id=&quot;1-초기화&quot;&gt;1. 초기화?&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://jusung.gitbook.io/the-swift-language-guide/language-guide/14-initialization&quot;&gt;애플 공식 문서&lt;/a&gt;에서 초기화란 Class, Struct, Enum 인스턴스를 사용하기위해 준비 작업을 하는 단계라고 설명한다. 이 단계에서 각 저장 프로퍼티의 초기 값을 설정한다....</description>
         <pubDate>Wed, 24 Nov 2021 09:00:00 +0900</pubDate>
-        <link>http://localhost:4000/posts/swift/2021/11/24/swift-initialization.html</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/swift/2021/11/24/swift-initialization.html</guid>
+        <link>http://localhost:4000/swift/2021/11/24/swift-initialization.html</link>
+        <guid isPermaLink="true">http://localhost:4000/swift/2021/11/24/swift-initialization.html</guid>
         
         <category>Swift</category>
         
@@ -27,8 +27,8 @@
         <title>[Swift] Class와 Struct</title>
         <description>&lt;h1 id=&quot;swift-class와-struct&quot;&gt;[Swift] Class와 Struct&lt;/h1&gt; &lt;p&gt;면접 질문에서도 많이 등장하는 Class와 Struct에 대해서 &lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#&quot;&gt;애플 공식 문서&lt;/a&gt;와 함께 알아보자.&lt;/p&gt; &lt;h2 id=&quot;1-class와-struct의-공통점&quot;&gt;1. Class와 Struct의 공통점&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;여러 변수를 담을 수 있는 컨테이너이다.&lt;/li&gt; &lt;li&gt;값을...</description>
         <pubDate>Tue, 23 Nov 2021 09:00:00 +0900</pubDate>
-        <link>http://localhost:4000/posts/swift/2021/11/23/swift-class-struct.html</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/swift/2021/11/23/swift-class-struct.html</guid>
+        <link>http://localhost:4000/swift/2021/11/23/swift-class-struct.html</link>
+        <guid isPermaLink="true">http://localhost:4000/swift/2021/11/23/swift-class-struct.html</guid>
         
         <category>Swift</category>
         
@@ -41,8 +41,8 @@
         <title>[Swift] Generic</title>
         <description>&lt;h1 id=&quot;swift-generic&quot;&gt;[Swift] Generic&lt;/h1&gt; &lt;h2 id=&quot;1-generic&quot;&gt;1. Generic?&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_283&quot;&gt;애플 공식 문서&lt;/a&gt;부터 살펴보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Generic&lt;/code&gt;은 Swift의 가장 강력한 기능 중 하나이며 Swift 표준 라이브러리의 대부분은 Generic 코드로 빌드된다고 설명한다. 일반 함수...</description>
         <pubDate>Mon, 08 Nov 2021 09:00:00 +0900</pubDate>
-        <link>http://localhost:4000/posts/swift/2021/11/08/swift-generic.html</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/swift/2021/11/08/swift-generic.html</guid>
+        <link>http://localhost:4000/swift/2021/11/08/swift-generic.html</link>
+        <guid isPermaLink="true">http://localhost:4000/swift/2021/11/08/swift-generic.html</guid>
         
         <category>Swift</category>
         
@@ -55,8 +55,8 @@
         <title>[Swift] inout</title>
         <description>&lt;h1 id=&quot;swift-inout&quot;&gt;[Swift] inout&lt;/h1&gt; &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inout&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy-in-copy-out&lt;/code&gt;의 줄임말로 안으로 복사되고, 다시 바깥으로 복사된다는 뜻이다.&lt;br /&gt; 무슨 뜻인지 &lt;a href=&quot;https://docs.swift.org/swift-book/LanguageGuide/Functions.html&quot;&gt;애플 공식 문서&lt;/a&gt;를 참고하여 알아보자.&lt;/p&gt; &lt;p&gt;파라미터로 넘겨받은 값을 1 증가시키는...</description>
         <pubDate>Wed, 03 Nov 2021 09:00:00 +0900</pubDate>
-        <link>http://localhost:4000/posts/swift/2021/11/03/swift-inout.html</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/swift/2021/11/03/swift-inout.html</guid>
+        <link>http://localhost:4000/swift/2021/11/03/swift-inout.html</link>
+        <guid isPermaLink="true">http://localhost:4000/swift/2021/11/03/swift-inout.html</guid>
         
         <category>Swift</category>
         

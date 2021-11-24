@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: post
 title:  "[Swift] inout"
 date:   2021-11-03 00:00:00
 author: bobo

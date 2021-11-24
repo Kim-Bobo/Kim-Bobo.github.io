@@ -124,110 +124,28 @@
 
 
     <div class="page-content">
-        <div class="post">
+        <div class="wrapper">
+<div class="page">
 
-<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
-  <div class="scrim has-cover">
-    <header class="post-header">
-      <h1 class="title">[Swift] inout</h1>
-      <p class="info">by <strong>bobo</strong></p>
-    </header>
-  </div>
-</div>
+  <header class="post-header">
+    <h1 class="post-title">Posts in "[swift] inout"</h1>
+  </header>
 
-<div class="wrapper">
-
+  <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
 
 
-<section class="post-meta">
-  <div class="post-date">November 3, 2021</div>
-  <div class="post-categories">
-  in 
-    
-    <a href="/category/Swift">Swift</a>
-    
-  
-  </div>
-</section>
-
-<article class="post-content">
-  <h1 id="swift-inout">[Swift] inout</h1>
-
-<p><code class="language-plaintext highlighter-rouge">inout</code>은 <code class="language-plaintext highlighter-rouge">copy-in-copy-out</code>의 줄임말로 안으로 복사되고, 다시 바깥으로 복사된다는 뜻이다.<br />
-무슨 뜻인지 <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html">애플 공식 문서</a>를 참고하여 알아보자.</p>
-
-<p>파라미터로 넘겨받은 값을 1 증가시키는 함수를 만들어보자.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">increaseNum</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-  	<span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>		<span class="c1">// 컴파일 에러 발생</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>작성했더니 컴파일 에러가 발생했다. 그 이유는 무엇일까?<br />
-함수 파라미터는 기본적으로 <code class="language-plaintext highlighter-rouge">상수(Constant)</code>이다. C, C++, Java, Python 등의 언어에서 함수의 파라미터는 <code class="language-plaintext highlighter-rouge">변수</code>로 사용되지만 Swift에서는 <code class="language-plaintext highlighter-rouge">상수</code>라는 것이 차이점이다.<br />
-함수 안에서 매개변수로 넘겨받은 <code class="language-plaintext highlighter-rouge">값(=상수)</code>를 변경하려고 했기 때문에 컴파일 에러가 발생한 것이다.</p>
-
-<p>함수가 매개변수 값을 수정 가능하게 하고 함수 호출이 끝난 후에도 변경된 값이 유지되게 하려면 <br />변수의 주소값을 넘겨 직접 접근할 수 있도록 도와주는 <code class="language-plaintext highlighter-rouge">inout</code> 키워드를 사용해야 한다.<br />
-어떻게 작성해야 하는지 알아보자.</p>
-
-<p><code class="language-plaintext highlighter-rouge">inout</code>은 파라미터 타입 앞에 배치하여 작성해야 한다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">increaseNum</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>	
-</code></pre></div></div>
-
-<p>또한, <code class="language-plaintext highlighter-rouge">inout</code> 매개변수에 대한 인수로는 변수만 전달할 수 있다. <br />상수와 리터럴은 수정할 수 없기 때문에 전달할 수 없다.</p>
-
-<p>매개변수를 인수로 전달할 때에는 변수명 앞에 <code class="language-plaintext highlighter-rouge">&amp;</code>를 붙여서 사용해야 한다. <br />이 말은 곧, 함수를 호출할 때 매개변수 값으로 넘어가는 변수명 왼쪽에 <code class="language-plaintext highlighter-rouge">&amp;</code>가 붙어있다면 함수 내부에서 수정될 수 있다는 의미이기도 하다.</p>
-
-<p>완성된 코드는 다음과 같다.</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">num</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"Before value : </span><span class="se">\(</span><span class="n">num</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>	<span class="c1">// Before value : 10</span>
-
-<span class="kd">func</span> <span class="nf">increaseNum</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="nf">increaseNum</span><span class="p">(</span><span class="o">&amp;</span><span class="n">num</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="s">"After value : </span><span class="se">\(</span><span class="n">num</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>	<span class="c1">// After value : 11</span>
-</code></pre></div></div>
-
-<p><br /><br /><br /></p>
-
-
-</article>
-
-
-
-<section class="tags">
-  <strong>Tags:</strong> <a href="/tag/Swift">Swift</a>
-</section>
-
-
-
-<section class="rss">
-  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
-</section>
-
-<section class="share">
-  <span>Share: </span>
-  
-    
-    
-    
-    
-    
-    
-    
-    
-  
-</section>
-
-
-
+  <article class="post-content">
+    <ul class="posts-list">
+      
+    </ul>
+  </article>
 
 </div>
 </div>
+<br>
 
     </div>
 

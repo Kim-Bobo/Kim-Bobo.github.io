@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[Swift] 고차함수</title>
+  <meta name="description" content="[Swift] 고차함수">
+  
+  <meta name="author" content="Kim-Bobo">
+  <meta name="copyright" content="&copy; Kim-Bobo 2021">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="[Swift] 고차함수" />
+  <meta property="og:url" content="http://localhost:4000/swift/2021/12/30/swift-higher-order-function.html">
+  <meta property="og:site_name" content="보보의 Devlog" />
+  <meta property="og:title" content="[Swift] 고차함수" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/instacode.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[Swift] 고차함수">
+  <meta name="twitter:description" content="[Swift] 고차함수">
+  <meta name="twitter:image" content="http://localhost:4000/assets/instacode.png">
+  <meta name="twitter:url" content="http://localhost:4000/swift/2021/12/30/swift-higher-order-function.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/swift/2021/12/30/swift-higher-order-function.html">
+	<link rel="alternate" type="application/rss+xml" title="보보의 Devlog" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="보보의 Devlog">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">[Swift] 고차함수</h1>
+      <p class="info">by <strong>bobo</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">December 30, 2021</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Swift">Swift</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h1 id="swift-고차함수">[Swift] 고차함수</h1>
+
+<p>고차함수란 하나 이상의 함수를 인자로 받아 결과로 함수를 반환하는 함수를 뜻한다.</p>
+
+<ul>
+  <li>
+    <h2 id="map">map</h2>
+  </li>
+</ul>
+
+<p>배열 내부의 값을 하나씩 mapping 하는 역할이다. 각 요소에 대한 값을 변경하고자 할 때 사용하고 결과로 배열을 리턴한다.
+컨테이너가 담고 있던 각각의 값을 매개변수를 통해 받은 함수에 적용한 후 새로운 컨테이너를 생성하여 반환한다. (기존 컨테이너의 값은 변경되지 않는다.)
+for-in과 비슷하나 비교했을 때 코드가 더 간결하고 재사용에 용이하며 컴파일러 차원에서 성능 차이가 있다.</p>
+
+<p>배열의 값을 2배씩 곱해진 배열을 리턴하는 예제를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arr</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">doubleArr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="p">(</span><span class="nv">element</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="k">in</span> 
+	<span class="n">element</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">doubleArr</span><span class="p">)</span>	<span class="c1">// [2, 4, 6, 8, 10, 12, 13, 16, 18, 20]</span>
+</code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">doubleArr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="nf">map</span><span class="p">({</span> <span class="nv">$0</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">})</span>
+</code></pre></div></div>
+
+<p>아래처럼 축약해서 사용하는 것도 가능하다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <h2 id="filter">filter</h2>
+  </li>
+</ul>
+
+<p>각 항목들을 비교하여 일치하는 결과물을 가진 새로운 배열을 리턴한다.</p>
+
+<p>짝수값만 가지는 배열을 리턴하는 예제를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arr</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">evenNumArr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="p">(</span><span class="nv">element</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">in</span>
+  <span class="n">element</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">evenNumArr</span><span class="p">)</span>	<span class="c1">// [2, 4, 6, 8, 10]</span>
+</code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">evenNumArr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="nf">filter</span><span class="p">({</span> <span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">})</span>
+</code></pre></div></div>
+
+<p>아래처럼 축약해서 사용하는 것도 가능하다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <h2 id="reduce">reduce</h2>
+  </li>
+</ul>
+
+<p>기존 컨테이너 내부의 요소들을 결합하여 새로운 값을 만든다. reduc에는 초기값을 계속 업데이트 시켜나가는 방식이기 때문에 초기값 지정이 꼭 필요하다.</p>
+
+<p>배열의 합을 리턴하는 예제를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arr</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">arrSum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="nf">reduce</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">in</span>                             
+	<span class="c1">// 0 + 1</span>
+	<span class="c1">// 1 + 2</span>
+	<span class="c1">// 3 + 3</span>
+	<span class="c1">// 6 + 4</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">})</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arrSum</span><span class="p">)</span>	<span class="c1">// 10</span>
+</code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arrSum</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>아래처럼 축약해서 사용하는 것도 가능하다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <h2 id="flatmap">flatMap</h2>
+  </li>
+</ul>
+
+<p>배열 내부의 값을 flatten 하게 만든다. nil을 제거하고 optional binding 해주는 역할이다. Swift 4.1부터 compactMap 이라는 이름으로 바뀌었지만 사라진 것은 아니다. 쓰임에 따라 flatMap, compactMap 을 구별해서 써야한다.</p>
+
+<p>nil이 포함된 2차원 배열을 nil이 제거된 1차원 배열로 변환하는 예제를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">multiArray</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">nil</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">let</span> <span class="nv">flatArray</span> <span class="o">=</span> <span class="n">multiArray</span><span class="o">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">}</span><span class="o">.</span><span class="n">compactMap</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">flatArray</span><span class="p">)</span>	<span class="c1">// [2, 4, 7, 5, 9]</span>
+</code></pre></div></div>
+
+<p>2차원 배열에서는 배열 내부의 값을 flatten 하게 만들어주기는 하지만 nil을 제거하고 optional binding 해주지 않기 때문에 flatMap을 한 리턴값에 compactMap을 해주어야 한다. 1차원 배열에서 flatMap을 해준다면 nil이 제거되고 optional binding 된 값이 리턴되지만, deprecated 경고 문구와 함께 compactMap을 사용하라 안내한다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <h2 id="compactmap">compactMap</h2>
+  </li>
+</ul>
+
+<p>flatMap과 비슷하게 nil을 제거하고 optional binding 해주는 역할이다.</p>
+
+<p>nil 제거 후 String으로 형변환하는 배열을 리턴하는 예제를 만들어보자.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arrWithNil</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">arrWithoutNilToString</span> <span class="o">=</span> <span class="n">arrWithNil</span><span class="o">.</span><span class="n">compactMap</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">}</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">String</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arrWithoutNilToString</span><span class="p">)</span>	<span class="c1">// ["1", "2", "4", "5", "6"]</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>마무리로 고차함수를 종합적으로 사용할 수 있는 예제를 하나 만들어보자.</p>
+
+<ol>
+  <li>nil이 포함된 2차원 배열을 nil을 제거한 1차원 배열로 만든다.</li>
+  <li>1차원 배열 내부에서 짝수들로만 이루어진 배열을 만들고 그 합을 구한다.</li>
+</ol>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">input</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">nil</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+<span class="k">let</span> <span class="nv">flatArr</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">}</span><span class="o">.</span><span class="n">compactMap</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">}</span>
+<span class="k">let</span> <span class="nv">evenNumArr</span> <span class="o">=</span> <span class="n">flatArr</span><span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="k">let</span> <span class="nv">evenNumSum</span> <span class="o">=</span> <span class="n">evenNumArr</span><span class="o">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">evenNumSum</span><span class="p">)</span>	<span class="c1">// 16</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Swift">Swift</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">보보의 Devlog</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:beehk58@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">beehk58@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/Kim-Bobo" title="">
+              <i class="fa fa-github"></i>
+              <span class="username">Kim-Bobo</span>
+            </a>
+          </li>
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text"></p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1"></script>
+<script src="//unpkg.com/tippy.js@5"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>

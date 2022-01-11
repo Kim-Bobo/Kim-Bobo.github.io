@@ -14,7 +14,7 @@ cover:  "/assets/instacode.png"
 
 ## 1. 초기화?
 
-[애플 공식 문서](https://jusung.gitbook.io/the-swift-language-guide/language-guide/14-initialization)에서 초기화란 Class, Struct, Enum 인스턴스를 사용하기위해 준비 작업을 하는 단계라고 설명한다. 이 단계에서 각 저장 프로퍼티의 초기 값을 설정한다. 초기화 과정은 `initializer`를 정의 하는 것으로 구현할 수 있다. Swift의 `initializer`는 값을 반환하지 않는다. 초기화와 반대로 여러 값과 자원의 해지를 위해 `deinitializer`도 사용할 수 있다.
+[애플 공식 문서](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html)에서 초기화란 Class, Struct, Enum 인스턴스를 사용하기위해 준비 작업을 하는 단계라고 설명한다. 이 단계에서 각 저장 프로퍼티의 초기 값을 설정한다. 초기화 과정은 `initializer`를 정의 하는 것으로 구현할 수 있다. Swift의 `initializer`는 값을 반환하지 않는다. 초기화와 반대로 여러 값과 자원의 해지를 위해 `deinitializer`도 사용할 수 있다.
 
 <br/>
 
